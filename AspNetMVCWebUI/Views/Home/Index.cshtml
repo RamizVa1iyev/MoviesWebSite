@@ -1,0 +1,37 @@
+﻿@model MovieViewModel;
+
+@{ //ViewData["Title"] = "Home Page";
+}
+@if (!Model.MoviesData.Success)
+{
+    <div class="alert alert-danger">@Model.MoviesData.Message</div>
+}
+else
+{
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Movie Name</th>
+                <th scope="col">Imdb</th>
+                <th scope="col">Genre Id</th>
+                <th scope="col"></th="col">
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.MoviesData.Success)
+            {
+                foreach (var movie in Model.MoviesData.Data)
+                {
+                    <tr>
+                        <th scope="row">@movie.MovieId</th>
+                        <td><a href="/Home/MovieDetail/@movie.MovieId">@movie.MovieName</a></td>
+                        <td>@movie.Imdb</td>
+                        <td>@movie.GenreId</td>
+                        <td><a class="btn btn-danger" asp-controller="Home" asp-action="DeleteMovie" asp-route-movieId="@movie.MovieId">Delete</a></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}

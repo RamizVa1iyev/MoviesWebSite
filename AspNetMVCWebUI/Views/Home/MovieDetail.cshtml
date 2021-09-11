@@ -1,0 +1,29 @@
+﻿@model MovieViewModel;
+
+<h3>Movie Detail</h3>
+
+<form asp-controller="Home" asp-action="MovieDetail" method="post">
+    <div class="row">
+        <div class="col-4">
+            <label for="MovieId">Movie Id</label>
+            <input id="MovieId" readonly type="number" class="form-control" placeholder="Movie Name" asp-for="Movie.Data.MovieId">
+        </div>
+        <div class="col-4">
+            <label for="MovieName">Movie Name</label>
+            <input id="MovieName" type="text" class="form-control" placeholder="Movie Name" asp-for="Movie.Data.MovieName">
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-4">
+            <label for="Imdb">Imdb</label>
+            <input id="Imdb" type="number" class="form-control" placeholder="Imdb" asp-for="Movie.Data.Imdb">
+        </div>
+        <div class="col-4">
+            <label for="GenreId">Genre</label>
+            <select  class="form-control" asp-for="Movie.Data.GenreId" asp-items="Model.Genres"></select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+
